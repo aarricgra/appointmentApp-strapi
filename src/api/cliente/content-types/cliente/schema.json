@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cliente",
     "pluralName": "clientes",
-    "displayName": "Cliente"
+    "displayName": "Cliente",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,19 @@
       "type": "string",
       "required": true
     },
-    "Correo": {
-      "type": "string"
-    },
     "Password": {
       "type": "string"
     },
     "Telefono": {
       "type": "biginteger"
+    },
+    "idRango": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::rango.rango"
+    },
+    "Correo": {
+      "type": "email"
     }
   }
 }

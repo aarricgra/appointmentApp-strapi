@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rangos",
+  "info": {
+    "singularName": "rango",
+    "pluralName": "rangos",
+    "displayName": "Rango"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    }
+  }
+}

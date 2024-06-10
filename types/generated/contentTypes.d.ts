@@ -362,39 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiClienteCliente extends Schema.CollectionType {
-  collectionName: 'clientes';
-  info: {
-    singularName: 'cliente';
-    pluralName: 'clientes';
-    displayName: 'Cliente';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Nombre: Attribute.String & Attribute.Required;
-    Correo: Attribute.String;
-    Password: Attribute.String;
-    Telefono: Attribute.BigInteger;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::cliente.cliente',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::cliente.cliente',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -821,6 +788,184 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiClienteCliente extends Schema.CollectionType {
+  collectionName: 'clientes';
+  info: {
+    singularName: 'cliente';
+    pluralName: 'clientes';
+    displayName: 'Cliente';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String & Attribute.Required;
+    Password: Attribute.String;
+    Telefono: Attribute.BigInteger;
+    idRango: Attribute.Relation<
+      'api::cliente.cliente',
+      'oneToOne',
+      'api::rango.rango'
+    >;
+    Correo: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cliente.cliente',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cliente.cliente',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductoProducto extends Schema.CollectionType {
+  collectionName: 'productos';
+  info: {
+    singularName: 'producto';
+    pluralName: 'productos';
+    displayName: 'Producto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String;
+    Descripcion: Attribute.String;
+    Imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    Precio: Attribute.Decimal;
+    Oferta: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::producto.producto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::producto.producto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRangoRango extends Schema.CollectionType {
+  collectionName: 'rangos';
+  info: {
+    singularName: 'rango';
+    pluralName: 'rangos';
+    displayName: 'Rango';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rango.rango',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rango.rango',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReservaReserva extends Schema.CollectionType {
+  collectionName: 'reservas';
+  info: {
+    singularName: 'reserva';
+    pluralName: 'reservas';
+    displayName: 'Reserva';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Fecha: Attribute.Date;
+    Hora: Attribute.Time;
+    idCliente: Attribute.Relation<
+      'api::reserva.reserva',
+      'oneToOne',
+      'api::cliente.cliente'
+    >;
+    idServicio: Attribute.Relation<
+      'api::reserva.reserva',
+      'oneToOne',
+      'api::servicio.servicio'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reserva.reserva',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reserva.reserva',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServicioServicio extends Schema.CollectionType {
+  collectionName: 'servicios';
+  info: {
+    singularName: 'servicio';
+    pluralName: 'servicios';
+    displayName: 'Servicio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String;
+    Descripcion: Attribute.String;
+    Imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    Precio: Attribute.Decimal;
+    Oferta: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::servicio.servicio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::servicio.servicio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -831,7 +976,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::cliente.cliente': ApiClienteCliente;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -840,6 +984,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::cliente.cliente': ApiClienteCliente;
+      'api::producto.producto': ApiProductoProducto;
+      'api::rango.rango': ApiRangoRango;
+      'api::reserva.reserva': ApiReservaReserva;
+      'api::servicio.servicio': ApiServicioServicio;
     }
   }
 }
