@@ -29,6 +29,14 @@
     },
     "Correo": {
       "type": "email"
+    },
+    "Cartera": {
+      "type": "decimal",
+      "default": 0
+    },
+    "Tickets": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

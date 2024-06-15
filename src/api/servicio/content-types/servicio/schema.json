@@ -4,7 +4,8 @@
   "info": {
     "singularName": "servicio",
     "pluralName": "servicios",
-    "displayName": "Servicio"
+    "displayName": "Servicio",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,18 +15,16 @@
     "Nombre": {
       "type": "string"
     },
-    "Descripcion": {
-      "type": "string"
-    },
     "Imagen": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "Precio": {
       "type": "decimal"

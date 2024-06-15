@@ -4,7 +4,8 @@
   "info": {
     "singularName": "reserva",
     "pluralName": "reservas",
-    "displayName": "Reserva"
+    "displayName": "Reserva",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::servicio.servicio"
+    },
+    "Coste": {
+      "type": "decimal"
     }
   }
 }
