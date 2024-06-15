@@ -37,6 +37,13 @@
     "Tickets": {
       "type": "integer",
       "default": 0
+    },
+    "Imagen": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

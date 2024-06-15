@@ -811,6 +811,7 @@ export interface ApiClienteCliente extends Schema.CollectionType {
     Correo: Attribute.Email;
     Cartera: Attribute.Decimal & Attribute.DefaultTo<0>;
     Tickets: Attribute.Integer & Attribute.DefaultTo<0>;
+    Imagen: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -970,6 +971,38 @@ export interface ApiServicioServicio extends Schema.CollectionType {
   };
 }
 
+export interface ApiSuperuserSuperuser extends Schema.CollectionType {
+  collectionName: 'superusers';
+  info: {
+    singularName: 'superuser';
+    pluralName: 'superusers';
+    displayName: 'Superuser';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Usuario: Attribute.String;
+    Password: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::superuser.superuser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::superuser.superuser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -993,6 +1026,7 @@ declare module '@strapi/types' {
       'api::rango.rango': ApiRangoRango;
       'api::reserva.reserva': ApiReservaReserva;
       'api::servicio.servicio': ApiServicioServicio;
+      'api::superuser.superuser': ApiSuperuserSuperuser;
     }
   }
 }
